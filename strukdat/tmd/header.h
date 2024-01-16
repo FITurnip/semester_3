@@ -1,60 +1,29 @@
 /**
- * Single List
-*/
-#define ListContainer Skill
-typedef struct {
-    char name[201];
-} Skill;
-
-typedef struct elmt *ElementAddress; // pointer ke element selanjutnya
-
-typedef struct elmt { // menyimpan next data
-    ListContainer container;
-    ElementAddress next;
-} Element;
-
-typedef struct { // menyimpan pointer ke element pertama
-    Element *first;
-} List;
-
-// Membuat list dan menghitung element
-void createList(List *list);
-int countListElement(List list);
-
-// Menambahkan element ke list
-void addListElementFirst(ListContainer datas, List *list);
-void addListElementAfter(Element *prev, ListContainer datas);
-void addListElementLast(ListContainer datas, List *list);
-
-// Menghapus element dari list
-void delListElementFirst(List *list);
-void delListElementAfter(Element *prev, List *list);
-void delListElementLast(List *list);
-void delListElementAll(List *list);
-
-// Menampilkan list
-void printListElement(ListContainer container);
-void printList(List list);
-
-/**
- * N-er Tree
+ * Saya Franklin mengerjakan evaluasi TMD dalam mata kuliah
+ * Strukdat untuk keberkahanNya maka saya tidak melakukan kecurangan seperti
+ * yang telah dispesifikasikan. Aamiin.
 */
 // Struktur data n-er tree
-#define Container Profession
+#define Container Proffesion
 typedef struct {
-    char name_key[201];
-    int salary, exp, totalSkill;
-    List skill;
-} Profession;
+    char unique_name[201];
+    int salary, salary_digit, exp, total_skill;
+    char **skills;
+    int columnWidth;
+    int dreamDestination; // flag
+} Proffesion;
  
 typedef struct nodeStruct* nodeAddress;
 typedef struct nodeStruct {
     Container container;
     nodeAddress sibling, child;
+    int level;
 } Node;
  
 typedef struct {
     Node* root;
+    int maxLevelOfTree;
+    int *maxSpace;
 } Tree;
  
 // Memmbuat node & tree
@@ -70,7 +39,8 @@ void delChild(Container container, Node *root);
 Node *findNode(Container container, Node *root);
  
 // Print element
-void printTreePreOrder(Node *root, int isFirstPrintedNode);
+void printContainer(Container container, int total_space);
+void printTreePreOrder(Tree *tree, Node *root, int isFirstPrintedNode, int total_space, int minCond);
 void printTreePostOrder(Node *root, int isFirstPrintedNode);
  
 // Menyalin tree
@@ -78,3 +48,15 @@ void copyTree(Node *src, Node **dst);
  
 // Membandingkan tree
 int isEqual(Node *a, Node *b);
+int getSalaryDigit(int salary);
+char *parse(char *input_str, Proffesion *proffesion);
+
+// mendapatkan nilai min max
+int max(int a, int b);
+int min(int a, int b);
+int getMaxColumnWidth(Node *root, Tree *tree);
+
+// buat dream path dan print
+int makeDreamPath(Node *root, Container container);
+void printDreamPath(Tree *tree, Node *root);
+void printDreamTree(Tree *tree, Node *root);

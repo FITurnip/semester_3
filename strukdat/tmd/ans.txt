@@ -1,0 +1,14 @@
+|kuliah - 0 digit
+- 0
+- 4 tahun
+- kecerdasan_buatan
+- rekayasa_perangkat_lunak
+- sistem_informasi
+- multimedia
+- jaringan
+ |junior_software_engineer - 2 digit
+ - 10000000
+- 3 tahun
+- basic_software_architecture
+- basic_convention_code
+- basic_framework
